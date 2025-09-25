@@ -1,3 +1,17 @@
+def draw_table():
+    i=0
+    while i<7:
+        print(f" {cells[i]} | {cells[i+1]} | {cells[i+2]} ")
+        print(f"___|___|___") if i<5 else print("")
+        i += 3
+
+def get_winner(limit, addon, incrm):
+    k=0
+    while k<limit:
+        if cells[k]==cells[k+addon]==cells[k+(2*addon)]:
+            print("You Win")
+        k += incrm
+
 cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 player = "X"
 wins= [
@@ -11,13 +25,11 @@ wins= [
     [2, 4, 6]
 ]
 running = True
+
+
+
 while running:
-    print(f" {cells[0]} | {cells[1]} | {cells[2]} ")
-    print("___|___|___")
-    print(f" {cells[3]} | {cells[4]} | {cells[5]} ")
-    print("___|___|___")
-    print(f" {cells[6]} | {cells[7]} | {cells[8]} ")
-    print("   |   |   ")
+    draw_table()
     i=0
     player_input = input("Enter a number between 1-9: ")
     while i<len(cells):
@@ -29,24 +41,16 @@ while running:
     else:
         player="X"
 
-    # k=0
-    # while k<7:
-    #     if cells[k]==cells[k+1]==cells[k+2]:
-    #         print("You Win")
-    #     k += 3
-    # k=0
-    # while k<3:
-    #     if cells[k]==cells[k+3]==cells[k+6]:
-    #         print("You Win")
-    #     k += 1
+    get_winner(7, 1, 3)
+    get_winner(3, 3, 1)
 
-    # if (cells[0]==cells[4]==cells[8]) or (cells[2]==cells[4]==cells[6]) :
-    #     print("You Win")
+    if (cells[0]==cells[4]==cells[8]) or (cells[2]==cells[4]==cells[6]) :
+        print("You Win")
 
-    for win in wins:
-        if cells[win[0]]==cells[win[1]]==cells[win[2]]:
-            print("You win")
-            running=False
+    # for win in wins:
+    #     if cells[win[0]]==cells[win[1]]==cells[win[2]]:
+    #         print("You win")
+    #         running=False
         
 
    
